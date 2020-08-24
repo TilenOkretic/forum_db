@@ -2,7 +2,7 @@ const Knex = require('knex');
 const table_names = require('../libs/table_names');
 
 /**
- * 
+ * Creating all tables
  * @param {Knex} knex 
  */
 exports.up = async (knex) => {
@@ -13,7 +13,7 @@ exports.up = async (knex) => {
         }),
         knex.schema.createTable(table_names.user, (table) => {
             table.increments();
-            table.integer('role_id').unsigned().index().references('id').inTable(table_names.role);
+            table.integer('role_id').unsigned().references('id').inTable(table_names.role);
             table.string('name').notNullable();
             table.string('email').notNullable();
             table.string('google_id').notNullable();
@@ -29,7 +29,7 @@ exports.up = async (knex) => {
  */
 exports.down = async (knex) => {
     await Promise.all([
-        knex.schema.dropTable(table_names.role),
-        knex.schema.dropTable(table_names.user)
+        knex.schema.dropTable(table_names.user),
+        knex.schema.dropTable(table_names.role)
     ]);
 };
