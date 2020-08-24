@@ -17,6 +17,7 @@ exports.up = async (knex) => {
             table.string('name').notNullable();
             table.string('email').notNullable();
             table.string('google_id').notNullable();
+            table.string('img_url').notNullable();
             table.boolean('banned').notNullable().defaultTo(false);
         })
     ]);
