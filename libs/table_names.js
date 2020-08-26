@@ -1,4 +1,5 @@
 module.exports = {
     user: 'users',
-    role: 'role'
+    role: 'role',
+    category: 'category'
 }

@@ -19,6 +19,12 @@ exports.up = async (knex) => {
             table.string('google_id').notNullable();
             table.string('img_url').notNullable();
             table.boolean('banned').notNullable().defaultTo(false);
+        }),
+        knex.schema.createTable(table_names.category, (table) => {
+            table.increments();
+            table.string('title').notNullable();
+            table.text('description').notNullable();
+            table.string('img_url');
         })
     ]);
 };
@@ -31,6 +37,7 @@ exports.up = async (knex) => {
 exports.down = async (knex) => {
     await Promise.all([
         knex.schema.dropTable(table_names.user),
-        knex.schema.dropTable(table_names.role)
+        knex.schema.dropTable(table_names.role),
+        knex.schema.dropTable(table_names.category)
     ]);
 };
