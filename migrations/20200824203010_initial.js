@@ -36,8 +36,9 @@ exports.up = async (knex) => {
  */
 exports.down = async (knex) => {
     await Promise.all([
+        knex.schema.dropTable(table_names.topic),
         knex.schema.dropTable(table_names.user),
         knex.schema.dropTable(table_names.role),
-        knex.schema.dropTableIfExists(table_names.category)
+        knex.schema.dropTableIfExists(table_names.category),
     ]);
 };
