@@ -9,10 +9,10 @@ exports.up = async (knex) => {
     await Promise.all([
         knex.schema.createTable(table_names.topic, (table) => {
             table.increments();
-            table.integer('category_id').unsigned().references('id').inTable(table_names.category);
-            table.integer('user_id').unsigned().references('id').inTable(table_names.user);
-            table.string('title');
-            table.text('discription');
+            table.integer('category_id').unsigned().references('id').inTable(table_names.category).onDelete('cascade');
+            table.integer('user_id').unsigned().references('id').inTable(table_names.user).onDelete('cascade');
+            table.string('title').notNullable();
+            table.text('description');
             table.timestamps(false, true);
         }),
     ]);
