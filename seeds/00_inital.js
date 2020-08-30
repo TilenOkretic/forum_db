@@ -9,7 +9,7 @@ const users = require('../libs/users');
  */
 exports.seed = async (knex) => {
   await Promise.all([
-    knex(table_names.role).del(),
+    //knex(table_names.role).del(),
     console.log('Clearing table:', table_names.role),
     knex(table_names.role).insert(users)
   ]);
